@@ -3,7 +3,7 @@ Documentation for the FF Convos API can be found [here](https://miamiyankee13.gi
 
 ## About FF Convos
 FF Convos allows you to keep track of fantasy football players through conversations.
-This API can be easily accessed via the FF CONVOS CLIENT
+This API can be easily accessed via the [FF Convos](https://ff-convos-client.herokuapp.com/) client.
 
 ## Features
 * Get all players
