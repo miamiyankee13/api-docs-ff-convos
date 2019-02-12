@@ -1,12 +1,13 @@
 ---
-title: API Reference
+title: FF Convos API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
 
 
 toc_footers:
-  - <a href='https://github.com/miamiyankee13/medicine-cabinet'>View Medicine Cabinet on GitHub</a>
+  - <a href='https://github.com/miamiyankee13/ff-convos-api'>View FF Convos API on GitHub</a>
+  - <a href='https://github.com/miamiyankee13/ff-convos-client'>View FF Convos Client on GitHub</a>
   - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
 
 includes:
@@ -17,17 +18,17 @@ search: true
 
 # Introduction
 
-Welcome to the Medicine Cabinet API! You can use our API to access Medicine Cabinet API endpoints, which can interact with our database of medicinal cannabis strains, as well as manage your digital medicine cabinet.
+Welcome to the FF Convos API! You can use our API to access FF Convos API endpoints, which can interact with our database of players & users, as well as the FF Convos client application.
 
 # Registration
-> To register with Medicine Cabinet, use this code:
+> To register with FF Convos, use this code:
 
 ```shell
 curl -X POST
-  https://medicine-cabinet.herokuapp.com/users
+  https://ff-convos-api.herokuapp.com/api/users
   -H 'Content-Type: application/json'
   -d '{
-	"userName": "<your username>",
+	"username": "<your username>",
 	"password": "<your password>",
 	"firstName": "<your first name>",
 	"lastName": "<your last name>"
@@ -39,22 +40,22 @@ curl -X POST
 ```json
 {
     "_id": "5c2a84e2ddca060017e13899",
+    "username": "testuser",
     "firstName": "test",
     "lastName": "tester",
-    "userName": "testuser",
-    "strains": []
+    "players": []
 }
 ```
-Medicine Cabinet uses JSON Web Token (JWT) to conrol access to the API. To obtain a token, you must have an account. To create an account, you can either register from the <a href='https://medicine-cabinet.herokuapp.com/'>client</a> or make a POST request to the `users` endpoint.
+FF Convos uses JSON Web Token (JWT) to conrol access to the API. To obtain a token, you must have an account. To create an account, you can either register from the <a href='https://ff-convos-api.herokuapp.com'>client</a> or make a POST request to the `/api/users` endpoint.
 
 ### HTTP Request
 
-`POST https://medicine-cabinet.herokuapp.com/users`
+`POST https://ff-convos-api.herokuapp.com/api/users`
 
 ### Required Fields
 Field | Description
 ----- | -----------
-userName | desired username
+username | desired username
 password | desired password
 firstName | your first name
 lastName | your last name
@@ -65,10 +66,10 @@ lastName | your last name
 
 ```shell
 curl -X POST 
-  https://medicine-cabinet.herokuapp.com/auth/login
+  https://ff-convos-api.herokuapp.com/api/auth/login
   -H 'Content-Type: application/json'
   -d '{
-	"userName": "<your username>",
+	"username": "<your username>",
 	"password": "<your password>"
 }'
 ```
@@ -80,16 +81,16 @@ curl -X POST
 }
 ```
 
-Once you have an account, you must either login from the <a href='https://medicine-cabinet.herokuapp.com/'>client</a> or make a POST request to the `auth/login` endpoint in order to obtain a token.
+Once you have an account, you must either login from the <a href='https://ff-convos-api.herokuapp.com'>client</a> or make a POST request to the `/api/auth/login` endpoint in order to obtain a token.
 
 ### HTTP Request
 
-`https://medicine-cabinet.herokuapp.com/auth/login`
+`https://ff-convos-api.herokuapp.com/auth/login`
 
 ### Required Fields
 Field | Description
 ----- | -----------
-userName | your username
+username | your username
 password | your password
 
 The returned token must be added in the header of any request to a protected endpoint via Bearer Authentication. The header should look as follows:
@@ -101,144 +102,149 @@ You must replace <code>&lt;token&gt;</code> with your token.
 </aside>
 
 
-# Strains
+# Players
 
-## Get All Strains
+## Get All Players
 
-> To retrieve all strains, use this code:
+> To retrieve all players, use this code:
 
 ```shell
 curl -X GET 
-  https://medicine-cabinet.herokuapp.com/strains
+  https://ff-convos-api.herokuapp.com/api/players
 ```
 
-> The above command returns a 200 status code and a JSON object containing an array of all existing strains like this:
+> The above command returns a 200 status code and a JSON object containing an array of all existing players like this:
 
 ```json
 {
-  "strains": [
+  "players": [
     {
-      "_id": "5c1151437a2d9625e08a7c8c",
-      "name": "A-Dub",
-      "type": "Hybrid",
-      "description": "A cross between Sour Double & Alien Dawg",
-      "flavor": "Earthy",
+      "_id": "5c61ad37be03e80f47283c1c",
+      "name": "Alvin Kamara",
+      "position": "RB",
+      "number": "41",
+      "team": "Saints",
       "comments": []
     },
     {
-      ...next strain
+      "_id": "5c5db356f29f0045fe63fde9",
+      "name": "Odell Beckham Jr.",
+      "position": "WR",
+      "number": "13",
+      "team": "Giants",
+      "comments": []
     }
   ]
 }
 ```
 
-This endpoint retrieves all existing strains from the database.
+This endpoint retrieves all existing players from the database.
 
 This endpoint is NOT protected, therefore does not require a token. 
 
 ### HTTP Request
 
-`GET https://medicine-cabinet.herokuapp.com/strains`
+`GET https://ff-convos-api.herokuapp.com/api/players`
 
 
-## Get a Specific Strain
+## Get an Individual Player
 
-> To retrieve a specific strain, use this code:
+> To retrieve an individual player, use this code:
 
 ```shell
 curl -X GET
-  https://medicine-cabinet.herokuapp.com/strains/<id>
+  https://ff-convos-api.herokuapp.com/api/players/<id>
 ```
 
-> The above command returns a 200 status code and a JSON object containing specific strain information like this:
+> The above command returns a 200 status code and a JSON object containing specific player information like this:
 
 ```json
 {
-  "_id": "5c1151437a2d9625e08a7c8c",
-  "name": "A-Dub",
-  "type": "Hybrid",
-  "description": "A cross between Sour Double & Alien Dawg",
-  "flavor": "Earthy",
+  "_id": "5c61ad37be03e80f47283c1c",
+  "name": "Alvin Kamara",
+  "position": "RB",
+  "number": "41",
+  "team": "Saints",
   "comments": []
 }
 ```
 
-This endpoint retrieves a specific strain from the database.
+This endpoint retrieves an individual from the database.
 
 This endpoint is NOT protected, therefore does not require a token. 
 
 
 ### HTTP Request
 
-`GET https://medicine-cabinet.herokuapp.com/strains/<id>`
+`GET https://ff-convos-api.herokuapp.com/api/players/<id>`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
-id | id of the strain to retrieve
+id | id of the player to retrieve
 
-## Create a Strain
+## Create a Player
 
-> To create a strain, use this code:
+> To create a player, use this code:
 
 ```shell
 curl -X POST
-  https://medicine-cabinet.herokuapp.com/strains/
+  https://ff-convos-api.herokuapp.com/api/players
   -H 'Authorization: Bearer <token>'
   -H 'Content-Type: application/json'
   -d '{
-	"name": "New Strain",
-	"type": "Hybrid",
-	"description": "A very new strain",
-	"flavor": "Sweet"
+	"name": "New Player",
+	"position": "QB",
+	"number": "7",
+	"team": "Dolphins"
 }'
 ```
 
-> The above command returns a 201 status code and a JSON object containing the strain information like this:
+> The above command returns a 201 status code and a JSON object containing the player information like this:
 
 ```json
 {
     "_id": "5c2a3758d1490900174e9da8",
-    "name": "New Strain",
-    "type": "Hybrid",
-    "description": "A very new strain",
-    "flavor": "Sweet",
+    "name": "New Player",
+    "position": "QB",
+    "number": "7",
+    "team": "Dolphins",
     "comments": []
 }
 ```
 
-This endpoint creates a new strain, adding it to the database.
+This endpoint creates a new player, adding it to the database.
 
 This endpoint IS protected, therefore requires a token.
 
 ### HTTP Request
 
-`POST https://medicine-cabinet.herokuapp.com/strains/`
+`POST https://ff-convos-api.herokuapp.com/api/players`
 
 ### Required Fields
 Field | Description
 ----- | -----------
-name | name of strain
-type | type of strain
-description | description of strain
-flavor | flavor of strain
+name | player name
+position | player position
+number | player number
+team | current team of player
 
-## Update a Specific Strain
+## Edit a Player
 
-> To update a strain, use this code:
+> To edit a player, use this code:
 
 ```shell
 curl -X PUT
-  https://medicine-cabinet.herokuapp.com/strains/<id>
+  https://ff-convos-api.herokuapp.com/api/players/<id>
   -H 'Authorization: Bearer <token>'
   -H 'Content-Type: application/json'
   -d '{
 	"_id": "5c2a3758d1490900174e9da8",
-	"name": "Old Strain",
-	"type": "Indica",
-	"description": "This strain is somewhat older now",
-	"flavor": "Sweet"
+	"name": "Old Player",
+	"position": "RB",
+	"number": "21",
+	"team": "Eagles"
 }'
 ```
 
@@ -247,75 +253,75 @@ curl -X PUT
 ```json
 {
     "_id": "5c2a3758d1490900174e9da8",
-    "name": "Old Strain",
-    "type": "Indica",
-    "description": "This strain is somewhat older now",
-    "flavor": "Sweet",
-    "comments": []
+	  "name": "Old Player",
+	  "position": "RB",
+	  "number": "21",
+	  "team": "Eagles",
+      "comments": []
 }
 ```
 
-This endpoint updates an exisintg strain in the database.
+This endpoint edits an exisintg player in the database.
 
 This endpoint IS protected, therefore requires a token.
 
 ### HTTP Request
 
-`PUT https://medicine-cabinet.herokuapp.com/strains/<id>`
+`PUT https://ff-convos-api.herokuapp.com/api/players/<id>`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
-id | id of the strain to update
+id | id of the player to edit
 
 ### Required Fields
 Field | Description
 ----- | -----------
-_id | id of strain to update
+_id | id of the player to edit
 
 ### Optional Fields
 Field | Description
 ----- | -----------
-name | updated name of strain
-type | updated type of strain
-description | updated description of strain
-flavor | updated flavor of strain
+name | player name
+position | player position
+number | player number
+team | current team of player
 
 
-## Delete a Specific Strain
+## Delete a Player
 
-> To delete a strain, use this code:
+> To delete a player, use this code:
 
 ```shell
 curl -X DELETE
-  https://medicine-cabinet.herokuapp.com/strains/<id>
+  https://ff-convos-api.herokuapp.com/api/players/<id>
   -H 'Authorization: Bearer <token>'
 ```
 
 > The above command returns a 204 status code.
 
-This endpoint deletes an existing strain from the database.
+This endpoint deletes an existing player from the database.
 
 This endpoint IS protected, therefore requires a token.
 
 ### HTTP Request
 
-`DELETE https://medicine-cabinet.herokuapp.com/strains/<id>`
+`DELETE https://ff-convos-api.herokuapp.com/api/players/<id>`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
-id | id of the strain to delete
+id | id of the player to delete
 
-## Add Strain Comment 
+## Add Comment to Player
 
-> To add a comment to a strain, use this code:
+> To add a comment to a player, use this code:
 
 ```shell
 curl -X POST
-  https://medicine-cabinet.herokuapp.com/strains/<id>
+  https://ff-convos-api.herokuapp.com/api/players/<id>
   -H 'Authorization: Bearer <token>'
   -H 'Content-Type: application/json'
   -d '{
@@ -330,22 +336,22 @@ curl -X POST
 
 ```json
 {
-    "message": "Comment added to strain"
+    "message": "Comment added to player"
 }
 ```
 
-This endpoint adds a comment to an existing strain in the database.
+This endpoint adds a comment to an existing player in the database.
 
 This endpoint IS protected, therefore requires a token.
 
 ### HTTP Request
 
-`POST https://medicine-cabinet.herokuapp.com/strains/<id>`
+`POST https://ff-convos-api.herokuapp.com/api/players/<id>`
 
 ### URL Parameters
 Parameter | Description
 --------- | -----------
-id | id of the strain you would like to add the comment to
+id | id of the player you would like to add the comment to
 
 ### Required Fields
 Field | Description
@@ -355,87 +361,142 @@ comment | object containing "content" and "author"
 - author | author of the comment
 
 
-## Delete Strain Comment
+## Remove Comment from Player
 
-> To remove a comment from a strain, use this code:
+> To remove a comment from a player, use this code:
 
 ```shell
 curl -X DELETE 
-  https://medicine-cabinet.herokuapp.com/strains/<id>/<commentid>
+  https://ff-convos-api.herokuapp.com/api/players/<id>/<commentid>
   -H 'Authorization: Bearer <token>' 
 ```
 
-> The above command returns a 204 status code.
+> The above command returns a 200 status code and a JSON object containing a message like this:
 
-This endpoint removes an existing comment from an existing strain in the database.
+```json
+{
+    "message": "Comment removed from player"
+}
+```
+
+This endpoint removes an existing comment from an existing player in the database.
 
 This endpoint IS protected, therefore requires a token.
 
 ### HTTP Request
 
-`DELETE https://medicine-cabinet.herokuapp.com/strains/<id>/<commentid>`
+`DELETE https://ff-convos-api.herokuapp.com/api/players/<id>/<commentid>`
 
 ### URL Parameters
 Parameter | Description
 --------- | -----------
-id | id of the strain to remove the comment from
+id | id of the player to remove the comment from
 commentid | id of the comment to remove
 
 # Users
 
-## Get All Cabinet Strains
+## Get All User Players
 
-> To retrieve all strains from your cabinet, use this code:
+> To retrieve all user tracked players, use this code:
 
 ```shell
 curl -X GET
-  https://medicine-cabinet.herokuapp.com/users/strains/
+  https://ff-convos-api.herokuapp.com/api/users/players
   -H 'Authorization: Bearer <token>'
  
 ```
 
-> The above command returns a 200 status code, as well as a JSON object containing an array of all existing cabinet strains and the user id like this:
+> The above command returns a 200 status code, as well as a JSON object containing an array of all existing user tracked players and the user id like this:
 
 ```json
 {
-    "strains": [
+    "players": [
         {
-            "_id": "5c1151437a2d9625e08a7c92",
-            "name": "Blueberry",
-            "type": "Indica",
-            "description": "2000 High Times Cannabis Cup Winner for Best Indica",
-            "flavor": "Blueberry",
-            "comments": [
-                {
-                    "_id": "5c1fd48fd251bc001769435f",
-                    "content": "This strain is perfect for anyone who is trying to relax and wind down after a long day. Tastes great too!",
-                    "author": "miamiyankee13"
-                }
-            ]
+            "_id": "5c5db356f29f0045fe63fde4",
+            "name": "Drew Brees",
+            "position": "QB",
+            "number": "9",
+            "team": "Saints",
+            "comments": []
         },
         {
-          ...next strain
+            "_id": "5c5db356f29f0045fe63fde5",
+            "name": "Nick Chubb",
+            "position": "RB",
+            "number": "24",
+            "team": "Browns",
+            "comments": []
         }
     ],
-    "_id": "5c297938214f280017250552"
+    "_id": "5c5ef7c10eadf4488389a0b4"
 }
 ```
 
-This endpoint retrieves all existing strains from your cabinet.
+This endpoint retrieves all existing user tracked players.
 
-This endpoint IS protected, therefore does not require a token. 
+This endpoint IS protected, therefore requires a token. 
 
 ### HTTP Request
 
-`GET https://medicine-cabinet.herokuapp.com/users/strains/`
+`GET https://ff-convos-api.herokuapp.com/api/users/players`
 
-## Add a Cabinet Strain
+## Get All User Players by Position
 
-> To add a strain to your cabinet, use this code:
+> To retrieve all user tracked players by position, use this code:
+
+```shell
+curl -X GET
+  https://ff-convos-api.herokuapp.com/api/users/players/<position>
+  -H 'Authorization: Bearer <token>'
+ 
+```
+
+> The above command returns a 200 status code, as well as a JSON object containing an array of all existing user tracked players by position and the user id like this:
+
+```json
+{
+    "players": [
+        {
+            "_id": "5c5db356f29f0045fe63fde4",
+            "name": "Drew Brees",
+            "position": "QB",
+            "number": "9",
+            "team": "Saints",
+            "comments": []
+        },
+        {
+            "_id": "5c5db356f29f0045fe63fde7",
+            "name": "Mitchell Trubisky",
+            "position": "QB",
+            "number": "10",
+            "team": "Bears",
+            "comments": []
+        }
+    ],
+    "_id": "5c5ef7c10eadf4488389a0b4"
+}
+```
+
+This endpoint retrieves all existing user tracked players by position.
+
+This endpoint IS protected, therefore requires a token. 
+
+### HTTP Request
+
+`GET https://ff-convos-api.herokuapp.com/api/users/players/<position>`
+
+### URL Parameters
+Parameter | Description
+--------- | -----------
+position | position to filter players by
+
+## Add Player to User
+
+> To add a player, use this code:
 
 ```shell
 curl -X PUT 
-  https://medicine-cabinet.herokuapp.com/users/strains/<id>
+  https://ff-convos-api.herokuapp.com/api/users/players/<id>
   -H 'Authorization: Bearer <token>'
 ```
 
@@ -443,46 +504,52 @@ curl -X PUT
 
 ```json
 {
-    "message": "Strain added to user"
+    "message": "Player added to user"
 }
 ```
 
-This endpoint adds an existing strain to your cabinet.
+This endpoint adds an existing player to the user.
 
-This endpoint IS protected, therefore does not require a token. 
+This endpoint IS protected, therefore requires a token. 
 
 ### HTTP Request
 
-`PUT https://medicine-cabinet.herokuapp.com/users/strains/<id>`
+`PUT https://ff-convos-api.herokuapp.com/api/users/players/<id>`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
-id | id of the strain to add
+id | id of the player to add
 
-## Delete a Cabinet Strain
+## Remove Player from User
 
-> To remove a strain from your cabinet, use this code:
+> To remove a player, use this code:
 
 ```shell
 curl -X DELETE 
-  https://medicine-cabinet.herokuapp.com/users/strains/<id>
+  https://ff-convos-api.herokuapp.com/api/users/players/<id>
   -H 'Authorization: Bearer <token>'
 ```
 
-> The above command returns a 204 status code.
+> The above command returns a 200 status code and a JSON object containing a message like this:
 
-This endpoint removes an existing strain from your cabinet.
+```json
+{
+    "message": "Player removed from user"
+}
+```
 
-This endpoint IS protected, therefore does not require a token. 
+This endpoint removes an existing player from the user.
+
+This endpoint IS protected, therefore requires a token. 
 
 ### HTTP Request
 
-`DELETE https://medicine-cabinet.herokuapp.com/users/strains/<id>`
+`DELETE https://ff-convos-api.herokuapp.com/api/users/players/<id>`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
-id | id of the strain to remove
+id | id of the player to remove
