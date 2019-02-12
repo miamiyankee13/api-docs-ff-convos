@@ -46,7 +46,7 @@ curl -X POST
     "players": []
 }
 ```
-FF Convos uses JSON Web Token (JWT) to conrol access to the API. To obtain a token, you must have an account. To create an account, you can either register from the <a href='https://ff-convos-api.herokuapp.com'>client</a> or make a POST request to the `/api/users` endpoint.
+FF Convos uses JSON Web Token (JWT) to conrol access to the API. To obtain a token, you must have an account. To create an account, you can either register from the <a href='https://ff-convos-client.herokuapp.com'>client</a> or make a POST request to the `/api/users` endpoint.
 
 ### HTTP Request
 
@@ -81,11 +81,11 @@ curl -X POST
 }
 ```
 
-Once you have an account, you must either login from the <a href='https://ff-convos-api.herokuapp.com'>client</a> or make a POST request to the `/api/auth/login` endpoint in order to obtain a token.
+Once you have an account, you must either login from the <a href='https://ff-convos-client.herokuapp.com'>client</a> or make a POST request to the `/api/auth/login` endpoint in order to obtain a token.
 
 ### HTTP Request
 
-`https://ff-convos-api.herokuapp.com/auth/login`
+`https://ff-convos-api.herokuapp.com/api/auth/login`
 
 ### Required Fields
 Field | Description
@@ -169,7 +169,7 @@ curl -X GET
 }
 ```
 
-This endpoint retrieves an individual from the database.
+This endpoint retrieves an individual player from the database.
 
 This endpoint is NOT protected, therefore does not require a token. 
 
@@ -253,11 +253,11 @@ curl -X PUT
 ```json
 {
     "_id": "5c2a3758d1490900174e9da8",
-	  "name": "Old Player",
-	  "position": "RB",
-	  "number": "21",
-	  "team": "Eagles",
-      "comments": []
+    "name": "Old Player",
+    "position": "RB",
+    "number": "21",
+    "team": "Eagles",
+    "comments": []
 }
 ```
 
@@ -367,7 +367,7 @@ comment | object containing "content" and "author"
 
 ```shell
 curl -X DELETE 
-  https://ff-convos-api.herokuapp.com/api/players/<id>/<commentid>
+  https://ff-convos-api.herokuapp.com/api/players/<id>/<commentId>
   -H 'Authorization: Bearer <token>' 
 ```
 
@@ -385,19 +385,19 @@ This endpoint IS protected, therefore requires a token.
 
 ### HTTP Request
 
-`DELETE https://ff-convos-api.herokuapp.com/api/players/<id>/<commentid>`
+`DELETE https://ff-convos-api.herokuapp.com/api/players/<id>/<commentId>`
 
 ### URL Parameters
 Parameter | Description
 --------- | -----------
 id | id of the player to remove the comment from
-commentid | id of the comment to remove
+commentId | id of the comment to remove
 
 # Users
 
 ## Get All User Players
 
-> To retrieve all user tracked players, use this code:
+> To retrieve all user players, use this code:
 
 ```shell
 curl -X GET
@@ -406,7 +406,7 @@ curl -X GET
  
 ```
 
-> The above command returns a 200 status code, as well as a JSON object containing an array of all existing user tracked players and the user id like this:
+> The above command returns a 200 status code, as well as a JSON object containing an array of all existing user players and the user id like this:
 
 ```json
 {
@@ -432,7 +432,7 @@ curl -X GET
 }
 ```
 
-This endpoint retrieves all existing user tracked players.
+This endpoint retrieves all existing user players.
 
 This endpoint IS protected, therefore requires a token. 
 
@@ -442,7 +442,7 @@ This endpoint IS protected, therefore requires a token.
 
 ## Get All User Players by Position
 
-> To retrieve all user tracked players by position, use this code:
+> To retrieve all user players by position, use this code:
 
 ```shell
 curl -X GET
@@ -451,7 +451,7 @@ curl -X GET
  
 ```
 
-> The above command returns a 200 status code, as well as a JSON object containing an array of all existing user tracked players by position and the user id like this:
+> The above command returns a 200 status code, as well as a JSON object containing an array of all existing user players by position and the user id like this:
 
 ```json
 {
@@ -477,7 +477,7 @@ curl -X GET
 }
 ```
 
-This endpoint retrieves all existing user tracked players by position.
+This endpoint retrieves all existing user players by position.
 
 This endpoint IS protected, therefore requires a token. 
 
