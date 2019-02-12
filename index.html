@@ -1,0 +1,928 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>FF Convos API Reference</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all.js"></script>
+  </head>
+
+  <body class="index" data-languages="[&quot;shell&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/logo.png" class="logo" alt="Logo" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="shell">shell</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#registration" class="toc-h1 toc-link" data-title="Registration">Registration</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#http-request" class="toc-h2 toc-link" data-title="HTTP Request">HTTP Request</a>
+                  </li>
+                  <li>
+                    <a href="#required-fields" class="toc-h2 toc-link" data-title="Required Fields">Required Fields</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#http-request-2" class="toc-h2 toc-link" data-title="HTTP Request">HTTP Request</a>
+                  </li>
+                  <li>
+                    <a href="#required-fields-2" class="toc-h2 toc-link" data-title="Required Fields">Required Fields</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#players" class="toc-h1 toc-link" data-title="Players">Players</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-players" class="toc-h2 toc-link" data-title="Get All Players">Get All Players</a>
+                  </li>
+                  <li>
+                    <a href="#get-an-individual-player" class="toc-h2 toc-link" data-title="Get an Individual Player">Get an Individual Player</a>
+                  </li>
+                  <li>
+                    <a href="#create-a-player" class="toc-h2 toc-link" data-title="Create a Player">Create a Player</a>
+                  </li>
+                  <li>
+                    <a href="#edit-a-player" class="toc-h2 toc-link" data-title="Edit a Player">Edit a Player</a>
+                  </li>
+                  <li>
+                    <a href="#delete-a-player" class="toc-h2 toc-link" data-title="Delete a Player">Delete a Player</a>
+                  </li>
+                  <li>
+                    <a href="#add-comment-to-player" class="toc-h2 toc-link" data-title="Add Comment to Player">Add Comment to Player</a>
+                  </li>
+                  <li>
+                    <a href="#remove-comment-from-player" class="toc-h2 toc-link" data-title="Remove Comment from Player">Remove Comment from Player</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#users" class="toc-h1 toc-link" data-title="Users">Users</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-user-players" class="toc-h2 toc-link" data-title="Get All User Players">Get All User Players</a>
+                  </li>
+                  <li>
+                    <a href="#get-all-user-players-by-position" class="toc-h2 toc-link" data-title="Get All User Players by Position">Get All User Players by Position</a>
+                  </li>
+                  <li>
+                    <a href="#add-player-to-user" class="toc-h2 toc-link" data-title="Add Player to User">Add Player to User</a>
+                  </li>
+                  <li>
+                    <a href="#remove-player-from-user" class="toc-h2 toc-link" data-title="Remove Player from User">Remove Player from User</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='https://github.com/miamiyankee13/ff-convos-api'>View FF Convos API on GitHub</a></li>
+            <li><a href='https://github.com/miamiyankee13/ff-convos-client'>View FF Convos Client on GitHub</a></li>
+            <li><a href='https://github.com/lord/slate'>Documentation Powered by Slate</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='introduction'>Introduction</h1>
+<p>Welcome to the FF Convos API! You can use our API to access FF Convos API endpoints, which can interact with our database of players &amp; users, as well as the FF Convos client application.</p>
+<h1 id='registration'>Registration</h1>
+<blockquote>
+<p>To register with FF Convos, use this code:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST
+  https://ff-convos-api.herokuapp.com/api/users
+  -H <span class="s1">'Content-Type: application/json'</span>
+  -d <span class="s1">'{
+    "username": "&lt;your username&gt;",
+    "password": "&lt;your password&gt;",
+    "firstName": "&lt;your first name&gt;",
+    "lastName": "&lt;your last name&gt;"
+}'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a 201 status code and a JSON object containing the user information like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5c2a84e2ddca060017e13899"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"testuser"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tester"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"players"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>FF Convos uses JSON Web Token (JWT) to conrol access to the API. To obtain a token, you must have an account. To create an account, you can either register from the <a href='https://ff-convos-api.herokuapp.com'>client</a> or make a POST request to the <code>/api/users</code> endpoint.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST https://ff-convos-api.herokuapp.com/api/users</code></p>
+<h3 id='required-fields'>Required Fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>username</td>
+<td>desired username</td>
+</tr>
+<tr>
+<td>password</td>
+<td>desired password</td>
+</tr>
+<tr>
+<td>firstName</td>
+<td>your first name</td>
+</tr>
+<tr>
+<td>lastName</td>
+<td>your last name</td>
+</tr>
+</tbody></table>
+<h1 id='authentication'>Authentication</h1>
+<blockquote>
+<p>To obtain a token, use this code:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST 
+  https://ff-convos-api.herokuapp.com/api/auth/login
+  -H <span class="s1">'Content-Type: application/json'</span>
+  -d <span class="s1">'{
+    "username": "&lt;your username&gt;",
+    "password": "&lt;your password&gt;"
+}'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a 200 status code and a JSON object containing a token like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"authToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;token&gt;"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Once you have an account, you must either login from the <a href='https://ff-convos-api.herokuapp.com'>client</a> or make a POST request to the <code>/api/auth/login</code> endpoint in order to obtain a token.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>https://ff-convos-api.herokuapp.com/auth/login</code></p>
+<h3 id='required-fields-2'>Required Fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>username</td>
+<td>your username</td>
+</tr>
+<tr>
+<td>password</td>
+<td>your password</td>
+</tr>
+</tbody></table>
+
+<p>The returned token must be added in the header of any request to a protected endpoint via Bearer Authentication. The header should look as follows:</p>
+
+<p><code>Authorization: Bearer &lt;token&gt;</code></p>
+
+<aside class="notice">
+You must replace <code>&lt;token&gt;</code> with your token.
+</aside>
+<h1 id='players'>Players</h1><h2 id='get-all-players'>Get All Players</h2>
+<blockquote>
+<p>To retrieve all players, use this code:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X GET 
+  https://ff-convos-api.herokuapp.com/api/players
+</code></pre>
+<blockquote>
+<p>The above command returns a 200 status code and a JSON object containing an array of all existing players like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"players"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5c61ad37be03e80f47283c1c"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Alvin Kamara"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RB"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"41"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"team"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Saints"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5c5db356f29f0045fe63fde9"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Odell Beckham Jr."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WR"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"team"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Giants"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all existing players from the database.</p>
+
+<p>This endpoint is NOT protected, therefore does not require a token. </p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET https://ff-convos-api.herokuapp.com/api/players</code></p>
+<h2 id='get-an-individual-player'>Get an Individual Player</h2>
+<blockquote>
+<p>To retrieve an individual player, use this code:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X GET
+  https://ff-convos-api.herokuapp.com/api/players/&lt;id&gt;
+</code></pre>
+<blockquote>
+<p>The above command returns a 200 status code and a JSON object containing specific player information like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5c61ad37be03e80f47283c1c"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Alvin Kamara"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RB"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"41"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"team"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Saints"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves an individual from the database.</p>
+
+<p>This endpoint is NOT protected, therefore does not require a token. </p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET https://ff-convos-api.herokuapp.com/api/players/&lt;id&gt;</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>id of the player to retrieve</td>
+</tr>
+</tbody></table>
+<h2 id='create-a-player'>Create a Player</h2>
+<blockquote>
+<p>To create a player, use this code:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST
+  https://ff-convos-api.herokuapp.com/api/players
+  -H <span class="s1">'Authorization: Bearer &lt;token&gt;'</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+  -d <span class="s1">'{
+    "name": "New Player",
+    "position": "QB",
+    "number": "7",
+    "team": "Dolphins"
+}'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a 201 status code and a JSON object containing the player information like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5c2a3758d1490900174e9da8"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New Player"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QB"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"team"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dolphins"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint creates a new player, adding it to the database.</p>
+
+<p>This endpoint IS protected, therefore requires a token.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>POST https://ff-convos-api.herokuapp.com/api/players</code></p>
+<h3 id='required-fields-3'>Required Fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>player name</td>
+</tr>
+<tr>
+<td>position</td>
+<td>player position</td>
+</tr>
+<tr>
+<td>number</td>
+<td>player number</td>
+</tr>
+<tr>
+<td>team</td>
+<td>current team of player</td>
+</tr>
+</tbody></table>
+<h2 id='edit-a-player'>Edit a Player</h2>
+<blockquote>
+<p>To edit a player, use this code:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X PUT
+  https://ff-convos-api.herokuapp.com/api/players/&lt;id&gt;
+  -H <span class="s1">'Authorization: Bearer &lt;token&gt;'</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+  -d <span class="s1">'{
+    "_id": "5c2a3758d1490900174e9da8",
+    "name": "Old Player",
+    "position": "RB",
+    "number": "21",
+    "team": "Eagles"
+}'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a 200 status code and a JSON object containing the updated data like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5c2a3758d1490900174e9da8"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Old Player"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RB"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"team"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Eagles"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint edits an exisintg player in the database.</p>
+
+<p>This endpoint IS protected, therefore requires a token.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>PUT https://ff-convos-api.herokuapp.com/api/players/&lt;id&gt;</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>id of the player to edit</td>
+</tr>
+</tbody></table>
+<h3 id='required-fields-4'>Required Fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>_id</td>
+<td>id of the player to edit</td>
+</tr>
+</tbody></table>
+<h3 id='optional-fields'>Optional Fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>player name</td>
+</tr>
+<tr>
+<td>position</td>
+<td>player position</td>
+</tr>
+<tr>
+<td>number</td>
+<td>player number</td>
+</tr>
+<tr>
+<td>team</td>
+<td>current team of player</td>
+</tr>
+</tbody></table>
+<h2 id='delete-a-player'>Delete a Player</h2>
+<blockquote>
+<p>To delete a player, use this code:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X DELETE
+  https://ff-convos-api.herokuapp.com/api/players/&lt;id&gt;
+  -H <span class="s1">'Authorization: Bearer &lt;token&gt;'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a 204 status code.</p>
+</blockquote>
+
+<p>This endpoint deletes an existing player from the database.</p>
+
+<p>This endpoint IS protected, therefore requires a token.</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>DELETE https://ff-convos-api.herokuapp.com/api/players/&lt;id&gt;</code></p>
+<h3 id='url-parameters-3'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>id of the player to delete</td>
+</tr>
+</tbody></table>
+<h2 id='add-comment-to-player'>Add Comment to Player</h2>
+<blockquote>
+<p>To add a comment to a player, use this code:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST
+  https://ff-convos-api.herokuapp.com/api/players/&lt;id&gt;
+  -H <span class="s1">'Authorization: Bearer &lt;token&gt;'</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
+  -d <span class="s1">'{
+    "comment": {
+        "content": "This is a test comment",
+        "author": "testuser"
+    }
+}'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a 201 status code and a JSON object containing a message like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comment added to player"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint adds a comment to an existing player in the database.</p>
+
+<p>This endpoint IS protected, therefore requires a token.</p>
+<h3 id='http-request-8'>HTTP Request</h3>
+<p><code>POST https://ff-convos-api.herokuapp.com/api/players/&lt;id&gt;</code></p>
+<h3 id='url-parameters-4'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>id of the player you would like to add the comment to</td>
+</tr>
+</tbody></table>
+<h3 id='required-fields-5'>Required Fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>comment</td>
+<td>object containing &quot;content&quot; and &quot;author&quot;</td>
+</tr>
+<tr>
+<td>- content</td>
+<td>content of the comment</td>
+</tr>
+<tr>
+<td>- author</td>
+<td>author of the comment</td>
+</tr>
+</tbody></table>
+<h2 id='remove-comment-from-player'>Remove Comment from Player</h2>
+<blockquote>
+<p>To remove a comment from a player, use this code:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X DELETE 
+  https://ff-convos-api.herokuapp.com/api/players/&lt;id&gt;/&lt;commentid&gt;
+  -H <span class="s1">'Authorization: Bearer &lt;token&gt;'</span> 
+</code></pre>
+<blockquote>
+<p>The above command returns a 200 status code and a JSON object containing a message like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Comment removed from player"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint removes an existing comment from an existing player in the database.</p>
+
+<p>This endpoint IS protected, therefore requires a token.</p>
+<h3 id='http-request-9'>HTTP Request</h3>
+<p><code>DELETE https://ff-convos-api.herokuapp.com/api/players/&lt;id&gt;/&lt;commentid&gt;</code></p>
+<h3 id='url-parameters-5'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>id of the player to remove the comment from</td>
+</tr>
+<tr>
+<td>commentid</td>
+<td>id of the comment to remove</td>
+</tr>
+</tbody></table>
+<h1 id='users'>Users</h1><h2 id='get-all-user-players'>Get All User Players</h2>
+<blockquote>
+<p>To retrieve all user tracked players, use this code:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X GET
+  https://ff-convos-api.herokuapp.com/api/users/players
+  -H <span class="s1">'Authorization: Bearer &lt;token&gt;'</span>
+
+</code></pre>
+<blockquote>
+<p>The above command returns a 200 status code, as well as a JSON object containing an array of all existing user tracked players and the user id like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"players"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5c5db356f29f0045fe63fde4"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Drew Brees"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QB"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"team"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Saints"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5c5db356f29f0045fe63fde5"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nick Chubb"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RB"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"team"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Browns"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5c5ef7c10eadf4488389a0b4"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all existing user tracked players.</p>
+
+<p>This endpoint IS protected, therefore requires a token. </p>
+<h3 id='http-request-10'>HTTP Request</h3>
+<p><code>GET https://ff-convos-api.herokuapp.com/api/users/players</code></p>
+<h2 id='get-all-user-players-by-position'>Get All User Players by Position</h2>
+<blockquote>
+<p>To retrieve all user tracked players by position, use this code:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X GET
+  https://ff-convos-api.herokuapp.com/api/users/players/&lt;position&gt;
+  -H <span class="s1">'Authorization: Bearer &lt;token&gt;'</span>
+
+</code></pre>
+<blockquote>
+<p>The above command returns a 200 status code, as well as a JSON object containing an array of all existing user tracked players by position and the user id like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"players"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5c5db356f29f0045fe63fde4"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Drew Brees"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QB"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"team"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Saints"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5c5db356f29f0045fe63fde7"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mitchell Trubisky"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QB"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"team"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bears"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5c5ef7c10eadf4488389a0b4"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all existing user tracked players by position.</p>
+
+<p>This endpoint IS protected, therefore requires a token. </p>
+<h3 id='http-request-11'>HTTP Request</h3>
+<p><code>GET https://ff-convos-api.herokuapp.com/api/users/players/&lt;position&gt;</code></p>
+<h3 id='url-parameters-6'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>position</td>
+<td>position to filter players by</td>
+</tr>
+</tbody></table>
+<h2 id='add-player-to-user'>Add Player to User</h2>
+<blockquote>
+<p>To add a player, use this code:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X PUT 
+  https://ff-convos-api.herokuapp.com/api/users/players/&lt;id&gt;
+  -H <span class="s1">'Authorization: Bearer &lt;token&gt;'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a 200 status code and a JSON object containing a message like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Player added to user"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint adds an existing player to the user.</p>
+
+<p>This endpoint IS protected, therefore requires a token. </p>
+<h3 id='http-request-12'>HTTP Request</h3>
+<p><code>PUT https://ff-convos-api.herokuapp.com/api/users/players/&lt;id&gt;</code></p>
+<h3 id='url-parameters-7'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>id of the player to add</td>
+</tr>
+</tbody></table>
+<h2 id='remove-player-from-user'>Remove Player from User</h2>
+<blockquote>
+<p>To remove a player, use this code:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X DELETE 
+  https://ff-convos-api.herokuapp.com/api/users/players/&lt;id&gt;
+  -H <span class="s1">'Authorization: Bearer &lt;token&gt;'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns a 200 status code and a JSON object containing a message like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Player removed from user"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint removes an existing player from the user.</p>
+
+<p>This endpoint IS protected, therefore requires a token. </p>
+<h3 id='http-request-13'>HTTP Request</h3>
+<p><code>DELETE https://ff-convos-api.herokuapp.com/api/users/players/&lt;id&gt;</code></p>
+<h3 id='url-parameters-8'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>id of the player to remove</td>
+</tr>
+</tbody></table>
+<h1 id='errors'>Errors</h1>
+<p>The FF Convos API uses the following error codes:</p>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Bad Request -- Your request is invalid.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized -- Your username, password, or token is invalid.</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found -- The specified request could not be found.</td>
+</tr>
+<tr>
+<td>422</td>
+<td>Unprocessable Entity -- Request could not be processed.</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="shell">shell</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
