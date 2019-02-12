@@ -1,6 +1,6 @@
 # Errors
 
-The Medicine Cabinet API uses the following error codes:
+The FF Convos API uses the following error codes:
 
 
 Error Code | Meaning
