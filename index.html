@@ -326,7 +326,7 @@
     </span><span class="s2">"players"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>FF Convos uses JSON Web Token (JWT) to conrol access to the API. To obtain a token, you must have an account. To create an account, you can either register from the <a href='https://ff-convos-api.herokuapp.com'>client</a> or make a POST request to the <code>/api/users</code> endpoint.</p>
+<p>FF Convos uses JSON Web Token (JWT) to conrol access to the API. To obtain a token, you must have an account. To create an account, you can either register from the <a href='https://ff-convos-client.herokuapp.com'>client</a> or make a POST request to the <code>/api/users</code> endpoint.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST https://ff-convos-api.herokuapp.com/api/users</code></p>
 <h3 id='required-fields'>Required Fields</h3>
@@ -372,9 +372,9 @@
     </span><span class="s2">"authToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;token&gt;"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Once you have an account, you must either login from the <a href='https://ff-convos-api.herokuapp.com'>client</a> or make a POST request to the <code>/api/auth/login</code> endpoint in order to obtain a token.</p>
+<p>Once you have an account, you must either login from the <a href='https://ff-convos-client.herokuapp.com'>client</a> or make a POST request to the <code>/api/auth/login</code> endpoint in order to obtain a token.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>https://ff-convos-api.herokuapp.com/auth/login</code></p>
+<p><code>https://ff-convos-api.herokuapp.com/api/auth/login</code></p>
 <h3 id='required-fields-2'>Required Fields</h3>
 <table><thead>
 <tr>
@@ -454,7 +454,7 @@ You must replace <code>&lt;token&gt;</code> with your token.
   </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves an individual from the database.</p>
+<p>This endpoint retrieves an individual player from the database.</p>
 
 <p>This endpoint is NOT protected, therefore does not require a token. </p>
 <h3 id='http-request-4'>HTTP Request</h3>
@@ -548,11 +548,11 @@ You must replace <code>&lt;token&gt;</code> with your token.
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5c2a3758d1490900174e9da8"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Old Player"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RB"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"team"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Eagles"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Old Player"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RB"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"team"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Eagles"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint edits an exisintg player in the database.</p>
@@ -701,7 +701,7 @@ You must replace <code>&lt;token&gt;</code> with your token.
 <p>To remove a comment from a player, use this code:</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl -X DELETE 
-  https://ff-convos-api.herokuapp.com/api/players/&lt;id&gt;/&lt;commentid&gt;
+  https://ff-convos-api.herokuapp.com/api/players/&lt;id&gt;/&lt;commentId&gt;
   -H <span class="s1">'Authorization: Bearer &lt;token&gt;'</span> 
 </code></pre>
 <blockquote>
@@ -715,7 +715,7 @@ You must replace <code>&lt;token&gt;</code> with your token.
 
 <p>This endpoint IS protected, therefore requires a token.</p>
 <h3 id='http-request-9'>HTTP Request</h3>
-<p><code>DELETE https://ff-convos-api.herokuapp.com/api/players/&lt;id&gt;/&lt;commentid&gt;</code></p>
+<p><code>DELETE https://ff-convos-api.herokuapp.com/api/players/&lt;id&gt;/&lt;commentId&gt;</code></p>
 <h3 id='url-parameters-5'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -728,13 +728,13 @@ You must replace <code>&lt;token&gt;</code> with your token.
 <td>id of the player to remove the comment from</td>
 </tr>
 <tr>
-<td>commentid</td>
+<td>commentId</td>
 <td>id of the comment to remove</td>
 </tr>
 </tbody></table>
 <h1 id='users'>Users</h1><h2 id='get-all-user-players'>Get All User Players</h2>
 <blockquote>
-<p>To retrieve all user tracked players, use this code:</p>
+<p>To retrieve all user players, use this code:</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl -X GET
   https://ff-convos-api.herokuapp.com/api/users/players
@@ -742,7 +742,7 @@ You must replace <code>&lt;token&gt;</code> with your token.
 
 </code></pre>
 <blockquote>
-<p>The above command returns a 200 status code, as well as a JSON object containing an array of all existing user tracked players and the user id like this:</p>
+<p>The above command returns a 200 status code, as well as a JSON object containing an array of all existing user players and the user id like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"players"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -766,14 +766,14 @@ You must replace <code>&lt;token&gt;</code> with your token.
     </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5c5ef7c10eadf4488389a0b4"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves all existing user tracked players.</p>
+<p>This endpoint retrieves all existing user players.</p>
 
 <p>This endpoint IS protected, therefore requires a token. </p>
 <h3 id='http-request-10'>HTTP Request</h3>
 <p><code>GET https://ff-convos-api.herokuapp.com/api/users/players</code></p>
 <h2 id='get-all-user-players-by-position'>Get All User Players by Position</h2>
 <blockquote>
-<p>To retrieve all user tracked players by position, use this code:</p>
+<p>To retrieve all user players by position, use this code:</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl -X GET
   https://ff-convos-api.herokuapp.com/api/users/players/&lt;position&gt;
@@ -781,7 +781,7 @@ You must replace <code>&lt;token&gt;</code> with your token.
 
 </code></pre>
 <blockquote>
-<p>The above command returns a 200 status code, as well as a JSON object containing an array of all existing user tracked players by position and the user id like this:</p>
+<p>The above command returns a 200 status code, as well as a JSON object containing an array of all existing user players by position and the user id like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"players"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -805,7 +805,7 @@ You must replace <code>&lt;token&gt;</code> with your token.
     </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5c5ef7c10eadf4488389a0b4"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves all existing user tracked players by position.</p>
+<p>This endpoint retrieves all existing user players by position.</p>
 
 <p>This endpoint IS protected, therefore requires a token. </p>
 <h3 id='http-request-11'>HTTP Request</h3>
